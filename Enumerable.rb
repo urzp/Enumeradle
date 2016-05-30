@@ -18,5 +18,15 @@ class Array
 	return self
 	end
 	
+	def my_select
+		for index in self
+			result_array=[]
+			if yield(self[index])
+				result_array << self[index]
+			end
+			index+=1
+		end
+	return self
+	end	
 	
 end
