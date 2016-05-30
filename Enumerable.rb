@@ -59,9 +59,41 @@ class Array
 				return true
 				break
 			end
-			index+=1
+		index+=1
 		end
 	return self
 	end	
+	
+	def my_none?
+	index=0	
+		loop do
+			if index >= self.size
+				return true
+				break 
+			end			
+			result=yield(self[index])
+			if result
+				return false
+				break
+			end
+		index+=1
+		end
+	return self
+	end	
+	
+	def my_count?
+	index=0	
+	count=0
+		loop do
+			result=yield(self[index])
+			if index >= self.size
+				return count
+				break 
+			end	
+			count+=1 if result
+		index+=1	
+		end
+	end		
+	
 	
 end
