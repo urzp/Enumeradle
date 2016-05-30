@@ -46,5 +46,22 @@ class Array
 	return self
 	end	
 	
+	def my_any?
+	index=0	
+		loop do
+			if index >= self.size
+				return false
+				break 
+			end			
+			result=yield(self[index])
+			#puts result for test
+			if result
+				return true
+				break
+			end
+			index+=1
+		end
+	return self
+	end	
 	
 end
