@@ -8,7 +8,7 @@ class Array
 		end
 	return self
 	end
-	
+
 	def my_each_with_index
 	index=0
 		while index < self.size
@@ -17,7 +17,7 @@ class Array
 		end
 	return self
 	end
-	
+
 	def my_select
 		for index in self
 			result_array=[]
@@ -26,15 +26,15 @@ class Array
 			end
 		end
 	return self
-	end	
-	
+	end
+
 	def my_all?
-	index=0	
+	index=0
 		loop do
 			if index >= self.size
 				return true
-				break 
-			end			
+				break
+			end
 			result=yield(self[index])
 			#puts result for test
 			if !result
@@ -44,15 +44,15 @@ class Array
 			index+=1
 		end
 	return self
-	end	
-	
+	end
+
 	def my_any?
-	index=0	
+	index=0
 		loop do
 			if index >= self.size
 				return false
-				break 
-			end			
+				break
+			end
 			result=yield(self[index])
 			#puts result for test
 			if result
@@ -62,15 +62,15 @@ class Array
 		index+=1
 		end
 	return self
-	end	
-	
+	end
+
 	def my_none?
-	index=0	
+	index=0
 		loop do
 			if index >= self.size
 				return true
-				break 
-			end			
+				break
+			end
 			result=yield(self[index])
 			if result
 				return false
@@ -79,30 +79,36 @@ class Array
 		index+=1
 		end
 	return self
-	end	
-	
+	end
+
 	def my_count?
-	index=0	
+	index=0
 	count=0
 		loop do
 			result=yield(self[index])
 			if index >= self.size
 				return count
-				break 
-			end	
+				break
+			end
 			count+=1 if result
-		index+=1	
+		index+=1
 		end
-	end		
-	
+	end
+
 	def my_map
 	map_array=[]
-	
 		for index in self
 			result=yield(self[index-1])
-			map_array[index-1]=result	
+			map_array[index-1]=result
 		end
 	return map_array
 	end
-	
+
+	def my_inject(memo=0)
+		for index in self
+			memo=yield([memo,self[index-1]])
+		end
+		return memo
+	end
+
 end

@@ -100,7 +100,6 @@ class Array
 	
 		for index in self
 			result=yield(self[index-1])
-			puts index
 			map_array[index-1]=result	
 		end
 	return map_array
