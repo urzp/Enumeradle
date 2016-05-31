@@ -105,10 +105,18 @@ class Array
 	end
 
 	def my_inject(memo=0)
-		for index in self
-			memo=yield([memo,self[index-1]])
+		memo+=self[0]
+		index=1
+		while index < self.size
+			memo=yield([memo,self[index]])
+			index+=1
 		end
 		return memo
 	end
 
+end
+
+
+def multiply_els(array)
+	return array.my_inject{|memo,i| memo*i}
 end
